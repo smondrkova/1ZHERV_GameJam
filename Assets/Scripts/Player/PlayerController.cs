@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,6 +25,14 @@ namespace Player
         {
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponentInChildren<Animator>();
+        }
+
+        private void Start()
+        {
+            if (GameManager.Instance != null)
+            {
+                transform.position = GameManager.Instance.playerPosition;
+            }
         }
 
         public void OnMove(InputValue value)
@@ -59,8 +68,6 @@ namespace Player
 
             // Check if grounded
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-            
-            Debug.Log(isGrounded);
             
             AnimatePlayer();
         }
