@@ -13,7 +13,7 @@ namespace Player
         public float groundCheckRadius = 0.2f;
 
         private Rigidbody2D rb;
-        private Animator animator;
+        public Animator animator;
         private bool isGrounded;
         private Vector2 moveInput;
         
