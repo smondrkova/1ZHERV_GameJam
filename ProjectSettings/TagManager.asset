@@ -44,6 +44,15 @@ TagManager:
   - name: Background
     uniqueID: 2019088453
     locked: 0
+  - name: Middle
+    uniqueID: 915821423
+    locked: 0
+  - name: Front
+    uniqueID: 1953051669
+    locked: 0
+  - name: Front_2
+    uniqueID: 1238505651
+    locked: 0
   - name: Player
     uniqueID: 2423586819
     locked: 0
