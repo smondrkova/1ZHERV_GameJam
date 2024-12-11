@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3546205801311167460}
   - component: {fileID: 1490038816419563225}
   - component: {fileID: 3941461399928155315}
-  - component: {fileID: 986805181478917151}
   m_Layer: 7
   m_Name: Adult
   m_TagString: Untagged
@@ -101,24 +100,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.98393387, y: 2.1246161}
   m_EdgeRadius: 0
---- !u!114 &986805181478917151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1501924801477032558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6c58b8e765a14d47984a8fa99896cac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  presentPrefab: {fileID: 2474002767467185961, guid: 4135e598d640c844c81068538cd2a213, type: 3}
-  placementPoint: {fileID: 0}
-  placementDistance: 1
-  placementLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!1 &6306879928711446598
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,8 +202,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1871380477
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 601131370, guid: 406b43b02e24fd64fa8e21968120a227, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

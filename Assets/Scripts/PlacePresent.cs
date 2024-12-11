@@ -11,7 +11,15 @@ public class PlacePresent : MonoBehaviour
     public Transform placementPoint;
     public LayerMask placementLayerMask; // Layer mask to filter placement positions
     
+    public bool isEnabled = true;
+    
     public void OnPlace()
+    {
+        if (!isEnabled) return;
+        Place();
+    }
+
+    private void Place()
     {
         Debug.Log("Placing present...");
         
@@ -33,6 +41,12 @@ public class PlacePresent : MonoBehaviour
     }
 
     public void OnDestroy()
+    {
+        if (!isEnabled) return;
+        Destroy();
+    }
+
+    private void Destroy()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(placementPoint.position, 0.5f);
         foreach (var hit in hits)

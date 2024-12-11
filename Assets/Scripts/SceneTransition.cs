@@ -12,11 +12,6 @@ public class SceneTransition : MonoBehaviour
         // Check if the player entered the trigger
         if (other.CompareTag("Player"))
         {
-            if (GameManager.Instance != null)
-            {
-                GameManager.Instance.SavePlayerPosition(spawnPositionInTargetScene);
-            }
-            
             SceneManager.sceneLoaded += OnSceneLoaded;
             SceneManager.LoadScene(targetScene);
         }
@@ -24,23 +19,7 @@ public class SceneTransition : MonoBehaviour
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        CharacterManager characterManager = CharacterManager.Instance;
-        
-        // Restore inactive characters to their fixed positions
-        // for (int i = 0; i < characterManager.characters.Length; i++)
-        // {
-        //     if (characterManager.characters[i] != characterManager.activeCharacter && i < characterManager.inactivePositions.Length)
-        //     {
-        //         characterManager.characters[i].transform.position = characterManager.inactivePositions[i].position;
-        //     }
-        // }
-        
-        Player.PlayerController activeCharacter = characterManager.activeCharacter;
-        if (GameManager.Instance != null && activeCharacter != null)
-        {
-            activeCharacter.transform.position = GameManager.Instance.playerPosition;
-        }
-        
+        Player.PlayerController.Instance.transform.position = spawnPositionInTargetScene;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

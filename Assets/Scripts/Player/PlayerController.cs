@@ -6,6 +6,7 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
+        public static PlayerController Instance;
         [Header("Movement Settings")] public float moveSpeed = 5f; // Speed of horizontal movement
         public float jumpForce = 10f; // Force applied for jumping
         public LayerMask groundLayer; // Layer considered as "ground" for jumping
@@ -21,26 +22,35 @@ namespace Player
         private bool isRunning;
         private bool isJumping;
         
-        public bool isActiveCharacter = false;
+        [Header("Character Settings")]
+        public GameObject currentCharacter;
+        public GameObject[] characters;
 
+        private PlacePresent placePresentScript;
+        private PickUpPresent pickUpPresentScript;
+        
         private void Awake()
         {
-            if (isActiveCharacter)
+            if (Instance == null)
             {
-                if (CharacterManager.Instance != null && CharacterManager.Instance.GetActiveCharacter() != this)
-                {
-                    Debug.LogWarning($"Duplicate active character {gameObject.name} destroyed");
-                    Destroy(gameObject); // Prevent duplicate active character
-                }
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+                Debug.Log("PlayerController Singleton Initialized");
+            }
+            else
+            {
+                Destroy(gameObject);
             }
             
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponentInChildren<Animator>();
+            placePresentScript = gameObject.GetComponent<PlacePresent>();
+            pickUpPresentScript = gameObject.GetComponent<PickUpPresent>();
         }
 
         private void Start()
         {
-            if (GameManager.Instance != null && isActiveCharacter)
+            if (GameManager.Instance != null)
             {
                 transform.position = GameManager.Instance.playerPosition;
             }
@@ -48,8 +58,6 @@ namespace Player
 
         public void OnMove(InputValue value)
         {
-            if (!isActiveCharacter) return;
-            
             moveInput = value.Get<Vector2>(); // Read horizontal input
             
             if (moveInput.x > 0 || moveInput.x < 0)
@@ -64,8 +72,6 @@ namespace Player
 
         public void OnJump(InputValue value)
         {
-            if (!isActiveCharacter) return;
-            
             Debug.Log(isGrounded);
             if (value.isPressed && isGrounded) 
             {
@@ -79,8 +85,6 @@ namespace Player
 
         private void FixedUpdate()
         {
-            if (!isActiveCharacter) return;
-            
             // Horizontal movement
             if (rb != null)
             {
@@ -132,5 +136,55 @@ namespace Player
                 
             }
         }
+        
+        public void OnCharacterSelect(InputValue value)
+        {
+            int newIndex = Mathf.RoundToInt(value.Get<float>()) - 1; // Convert 1-based input to 0-based index
+            SwitchCharacter(newIndex);
+        }
+        
+        public void SwitchCharacter(int index)
+        {
+            if (index < 0 || index >= characters.Length)
+            {
+                Debug.LogWarning("Invalid character index.");
+                return;
+            }
+            
+            if (currentCharacter != null)
+            {
+                Destroy(currentCharacter);
+            }
+            
+            GameObject newCharacter = Instantiate(characters[index], transform.position, Quaternion.identity, transform);
+            currentCharacter = newCharacter;
+            
+            currentCharacter.transform.localPosition = Vector3.zero;
+            animator = currentCharacter.GetComponentInChildren<Animator>();
+
+            Debug.Log("Current Character name" + currentCharacter.gameObject.name);
+            if (currentCharacter.gameObject.name == "Adult(Clone)")
+            {
+                placePresentScript.isEnabled = true;
+            }
+            else
+            {
+                placePresentScript.isEnabled = false;
+            }
+            
+            if (currentCharacter.gameObject.name == "Kid(Clone)")
+            {
+                pickUpPresentScript.isEnabled = true;
+            }
+            else
+            {
+                pickUpPresentScript.isEnabled = false;
+            }
+            
+            Debug.Log("Character switched to " + currentCharacter.name);
+        }
     }
+    
+
+
 }
