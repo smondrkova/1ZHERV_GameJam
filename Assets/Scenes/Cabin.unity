@@ -1823,6 +1823,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &661132790 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5321678608217648443, guid: 98639dd3d05e7924fbc8f8489faeef27, type: 3}
+  m_PrefabInstance: {fileID: 1653127492}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &702020056
 GameObject:
   m_ObjectHideFlags: 0
@@ -5764,6 +5769,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1855845830439169977, guid: 98639dd3d05e7924fbc8f8489faeef27, type: 3}
+      propertyPath: presentPrefab
+      value: 
+      objectReference: {fileID: 2474002767467185961, guid: 4135e598d640c844c81068538cd2a213, type: 3}
+    - target: {fileID: 1855845830439169977, guid: 98639dd3d05e7924fbc8f8489faeef27, type: 3}
+      propertyPath: placementPoint
+      value: 
+      objectReference: {fileID: 661132790}
+    - target: {fileID: 1855845830439169977, guid: 98639dd3d05e7924fbc8f8489faeef27, type: 3}
+      propertyPath: placementLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 4933365502494443291, guid: 98639dd3d05e7924fbc8f8489faeef27, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
