@@ -28,7 +28,7 @@ public class PlacePresent : MonoBehaviour
             return;
         }
 
-        Instantiate(presentPrefab, placementPoint.position, Quaternion.identity);
+        GameObject newPresent = Instantiate(presentPrefab, placementPoint.position, Quaternion.identity);
         Debug.Log("Present placed!");
     }
 

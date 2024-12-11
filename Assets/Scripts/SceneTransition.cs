@@ -24,7 +24,18 @@ public class SceneTransition : MonoBehaviour
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Player.PlayerController activeCharacter = CharacterManager.Instance.activeCharacter;
+        CharacterManager characterManager = CharacterManager.Instance;
+        
+        // Restore inactive characters to their fixed positions
+        // for (int i = 0; i < characterManager.characters.Length; i++)
+        // {
+        //     if (characterManager.characters[i] != characterManager.activeCharacter && i < characterManager.inactivePositions.Length)
+        //     {
+        //         characterManager.characters[i].transform.position = characterManager.inactivePositions[i].position;
+        //     }
+        // }
+        
+        Player.PlayerController activeCharacter = characterManager.activeCharacter;
         if (GameManager.Instance != null && activeCharacter != null)
         {
             activeCharacter.transform.position = GameManager.Instance.playerPosition;
