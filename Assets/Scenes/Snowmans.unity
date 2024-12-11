@@ -1479,7 +1479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScene: Cabin
-  spawnPositionInTargetScene: {x: -8.7, y: -0.45, z: 0}
+  spawnPositionInTargetScene: {x: -4, y: -0.45, z: 0}
 --- !u!61 &592458117
 BoxCollider2D:
   m_ObjectHideFlags: 0

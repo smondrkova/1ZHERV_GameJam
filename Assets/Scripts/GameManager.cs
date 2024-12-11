@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    public void SavePlayerPosition(Vector3 position)
+    {
+        playerPosition = position;
+    }
 
     public void LoadScene(string sceneName, Vector3 spawnPosition)
     {

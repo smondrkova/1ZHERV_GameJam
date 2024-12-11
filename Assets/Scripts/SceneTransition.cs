@@ -12,9 +12,10 @@ public class SceneTransition : MonoBehaviour
         // Check if the player entered the trigger
         if (other.CompareTag("Player"))
         {
-            Debug.Log("HERE");
-            // Use the GameManager to load the new scene
-            //GameManager.Instance.LoadScene(targetScene, spawnPositionInTargetScene);
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.SavePlayerPosition(spawnPositionInTargetScene);
+            }
             
             SceneManager.sceneLoaded += OnSceneLoaded;
             SceneManager.LoadScene(targetScene);
@@ -23,7 +24,12 @@ public class SceneTransition : MonoBehaviour
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Player.PlayerController.Instance.transform.position = spawnPositionInTargetScene;
+        Player.PlayerController activeCharacter = CharacterManager.Instance.activeCharacter;
+        if (GameManager.Instance != null && activeCharacter != null)
+        {
+            activeCharacter.transform.position = GameManager.Instance.playerPosition;
+        }
+        
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

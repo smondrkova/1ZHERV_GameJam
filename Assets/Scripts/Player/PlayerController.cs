@@ -21,20 +21,10 @@ namespace Player
         private bool isRunning;
         private bool isJumping;
         
-        public static PlayerController Instance;
+        public bool isActiveCharacter = false;
 
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponentInChildren<Animator>();
         }
@@ -49,6 +39,8 @@ namespace Player
 
         public void OnMove(InputValue value)
         {
+            if (!isActiveCharacter) return;
+            
             moveInput = value.Get<Vector2>(); // Read horizontal input
             
             if (moveInput.x > 0 || moveInput.x < 0)
@@ -63,6 +55,9 @@ namespace Player
 
         public void OnJump(InputValue value)
         {
+            if (!isActiveCharacter) return;
+            
+            Debug.Log(isGrounded);
             if (value.isPressed && isGrounded) 
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Apply jump force
@@ -75,6 +70,8 @@ namespace Player
 
         private void FixedUpdate()
         {
+            if (!isActiveCharacter) return;
+            
             // Horizontal movement
             rb.velocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
 
