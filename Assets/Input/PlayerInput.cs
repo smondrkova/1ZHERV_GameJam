@@ -80,6 +80,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PickUpPlace"",
+                    ""type"": ""Button"",
+                    ""id"": ""234035e6-c730-4259-9bbd-a9d1d7eaa3b5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -390,6 +399,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""CharacterSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65e0d819-eb6e-4aed-9b05-42b7387bedfe"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""M&K"",
+                    ""action"": ""PickUpPlace"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -432,6 +452,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_PlayerControl_Sprint = m_PlayerControl.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerControl_Crouch = m_PlayerControl.FindAction("Crouch", throwIfNotFound: true);
         m_PlayerControl_CharacterSelect = m_PlayerControl.FindAction("CharacterSelect", throwIfNotFound: true);
+        m_PlayerControl_PickUpPlace = m_PlayerControl.FindAction("PickUpPlace", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -499,6 +520,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_Sprint;
     private readonly InputAction m_PlayerControl_Crouch;
     private readonly InputAction m_PlayerControl_CharacterSelect;
+    private readonly InputAction m_PlayerControl_PickUpPlace;
     public struct PlayerControlActions
     {
         private @PlayerInput m_Wrapper;
@@ -509,6 +531,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_PlayerControl_Sprint;
         public InputAction @Crouch => m_Wrapper.m_PlayerControl_Crouch;
         public InputAction @CharacterSelect => m_Wrapper.m_PlayerControl_CharacterSelect;
+        public InputAction @PickUpPlace => m_Wrapper.m_PlayerControl_PickUpPlace;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -536,6 +559,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @CharacterSelect.started += instance.OnCharacterSelect;
             @CharacterSelect.performed += instance.OnCharacterSelect;
             @CharacterSelect.canceled += instance.OnCharacterSelect;
+            @PickUpPlace.started += instance.OnPickUpPlace;
+            @PickUpPlace.performed += instance.OnPickUpPlace;
+            @PickUpPlace.canceled += instance.OnPickUpPlace;
         }
 
         private void UnregisterCallbacks(IPlayerControlActions instance)
@@ -558,6 +584,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @CharacterSelect.started -= instance.OnCharacterSelect;
             @CharacterSelect.performed -= instance.OnCharacterSelect;
             @CharacterSelect.canceled -= instance.OnCharacterSelect;
+            @PickUpPlace.started -= instance.OnPickUpPlace;
+            @PickUpPlace.performed -= instance.OnPickUpPlace;
+            @PickUpPlace.canceled -= instance.OnPickUpPlace;
         }
 
         public void RemoveCallbacks(IPlayerControlActions instance)
@@ -601,5 +630,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnCharacterSelect(InputAction.CallbackContext context);
+        void OnPickUpPlace(InputAction.CallbackContext context);
     }
 }

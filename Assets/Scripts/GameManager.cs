@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public Vector3 playerPosition; // Stores player's position between scenes
+    public Vector3 playerPosition; 
 
     private void Awake()
     {

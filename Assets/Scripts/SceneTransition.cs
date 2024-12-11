@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
@@ -13,7 +14,16 @@ public class SceneTransition : MonoBehaviour
         {
             Debug.Log("HERE");
             // Use the GameManager to load the new scene
-            GameManager.Instance.LoadScene(targetScene, spawnPositionInTargetScene);
+            //GameManager.Instance.LoadScene(targetScene, spawnPositionInTargetScene);
+            
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.LoadScene(targetScene);
         }
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Player.PlayerController.Instance.transform.position = spawnPositionInTargetScene;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
