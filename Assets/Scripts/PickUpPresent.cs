@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 public class PickUpPresent : MonoBehaviour
 {
     private GameObject pickedUpPresentPrefab;
-    public bool isEnabled = true;
-
+    public bool isEnabled = false;
+    
     public void OnPickUp(InputValue value)
     {
         if (!isEnabled) return;

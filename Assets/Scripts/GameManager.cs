@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public Vector3 playerPosition; 
-    public GameObject startMenu;
+    public GameObject tutorial;
 
     private void Awake()
     {
@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        startMenu.SetActive(false);
         DialogueManager.Instance.StartFirstDialogue();
     }
     

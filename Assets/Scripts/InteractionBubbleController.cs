@@ -32,11 +32,8 @@ public class InteractionBubbleController : MonoBehaviour
         {
             // Calculate the distance between the player and the present
             float distance = Vector3.Distance(player.position, transform.position);
-            Debug.Log("Distance:" + distance);
-            Debug.Log("Interaction Range:" + interactionRange);
             if (distance <= interactionRange)
             {
-                Debug.Log("In range");
                 // Show the bubble and update its position above the present
                 interactionBubbleInstance.SetActive(true);
                 interactionBubbleInstance.transform.position = transform.position + Vector3.up * 0.6f; // Adjust offset

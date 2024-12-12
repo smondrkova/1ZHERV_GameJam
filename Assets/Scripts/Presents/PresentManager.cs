@@ -90,4 +90,9 @@ public class PresentManager : MonoBehaviour
         }
     }
     
+    public void SetPresentCountText(int numberOfPresents)
+    {
+        presentCountText.text = $"{numberOfPresents}/{totalPresents}";
+    }
+    
 }
