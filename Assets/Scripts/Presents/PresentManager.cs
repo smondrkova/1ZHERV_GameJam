@@ -1,9 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PresentManager : MonoBehaviour
 {
     public static PresentManager Instance;
+
+    [Header("Present settings")] 
+    public int totalPresents = 10;
+    private int remainingPresentsToPlace;
+    private int pickedUpPresents;
+    
+    [Header("UI settings")] 
+    public Text presentCountText;
 
     [System.Serializable]
     public class PresentData
@@ -27,6 +36,13 @@ public class PresentManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    private void Start()
+    {
+        remainingPresentsToPlace = totalPresents;
+        pickedUpPresents = 0;
+        UpdatePresentCountText();
+    }
 
     public void SavePresent(string sceneName, Vector3 position, Quaternion rotation, string prefabName)
     {
@@ -47,4 +63,31 @@ public class PresentManager : MonoBehaviour
         }
         return new List<PresentData>();
     }
+    
+    public void PlacePresentUI()
+    {
+        if (remainingPresentsToPlace <= 0) return;
+        remainingPresentsToPlace--;
+        UpdatePresentCountText();
+    }
+    
+    public void PickUpPresentUI()
+    {
+        if (pickedUpPresents >= totalPresents) return;
+        pickedUpPresents++;
+        UpdatePresentCountText();
+    }
+    
+    private void UpdatePresentCountText()
+    {
+        if (remainingPresentsToPlace != 0)
+        {
+            presentCountText.text = $"{remainingPresentsToPlace}/{totalPresents}";
+        }
+        else
+        {
+            presentCountText.text = $"{pickedUpPresents}/{totalPresents}";
+        }
+    }
+    
 }

@@ -40,6 +40,7 @@ public class PlacePresent : MonoBehaviour
         
         string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         PresentManager.Instance.SavePresent(sceneName, newPresent.transform.position, newPresent.transform.rotation, presentPrefab.name);
+        PresentManager.Instance.PlacePresentUI();
         
         Debug.Log("Present placed!");
     }

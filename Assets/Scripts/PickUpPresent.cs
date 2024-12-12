@@ -28,6 +28,7 @@ public class PickUpPresent : MonoBehaviour
                 Debug.Log("Present picked up!");
                 pickedUpPresentPrefab = hit.gameObject;
                 Destroy(hit.gameObject);
+                PresentManager.Instance.PickUpPresentUI();
                 return;
             }
         }
