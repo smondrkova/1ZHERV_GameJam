@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public Vector3 playerPosition; 
+    public GameObject startMenu;
 
     private void Awake()
     {
@@ -33,5 +35,25 @@ public class GameManager : MonoBehaviour
         
         // Load the target scene
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void StartGame()
+    {
+        startMenu.SetActive(false);
+        DialogueManager.Instance.StartFirstDialogue();
+    }
+    
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        // Quitting in Unity Editor: 
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER || UNITY_WEBGL
+        // Quitting in the WebGL build: 
+        Application.OpenURL(Application.absoluteURL);
+#else // !UNITY_WEBPLAYER
+        // Quitting in all other builds: 
+        Application.Quit();
+#endif
     }
 }

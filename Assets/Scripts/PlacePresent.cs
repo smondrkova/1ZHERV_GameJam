@@ -21,6 +21,12 @@ public class PlacePresent : MonoBehaviour
 
     private void Place()
     {
+        if (PresentManager.Instance.remainingPresentsToPlace == 0)
+        {
+            Debug.Log("No presents left to place.");
+            return;
+        }
+        
         Debug.Log("Placing present...");
         
         if (presentPrefab == null)

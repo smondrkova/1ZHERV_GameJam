@@ -8,8 +8,8 @@ public class PresentManager : MonoBehaviour
 
     [Header("Present settings")] 
     public int totalPresents = 10;
-    private int remainingPresentsToPlace;
-    private int pickedUpPresents;
+    public int remainingPresentsToPlace;
+    public int pickedUpPresents;
     
     [Header("UI settings")] 
     public Text presentCountText;
