@@ -36,8 +36,20 @@ public class DialogueManager : MonoBehaviour
     private void OnFirstDialogueComplete()
     {
         Debug.Log("First dialogue complete!");
-        followerDialogue.StartDialogue(followerDialogue.secondDialogueLines);
+        followerDialogue.StartDialogue(followerDialogue.secondDialogueLines, OnSecondDialogueComplete);
         Player.PlayerController.Instance.SwitchCharacter(1);
+    }
+    
+    private void OnSecondDialogueComplete()
+    {
+        Debug.Log("Second dialogue complete!");
+        followerDialogue.StartDialogue(followerDialogue.finalDialogueLines, OnLastDialogueComplete);
+    }
+    
+    private void OnLastDialogueComplete()
+    {
+        Debug.Log("Last dialogue complete!");
+        UIManager.Instance.ShowExitButton();
     }
     
 }

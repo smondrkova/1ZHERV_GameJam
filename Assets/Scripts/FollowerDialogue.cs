@@ -25,6 +25,8 @@ public class FollowerDialogue : MonoBehaviour
     [Header("Dialogue Sequences")]
     [TextArea] public string[] firstDialogueLines = 
     {
+        "Don't mind me, I will just follow you around and tag along your adventure.",
+        "I hope you won't mind me sharing some stories and wisdom with you.",
         "Ah, the joy of Christmas... a time when the world feels just a little brighter.",
         "The gifts, the lights, the laughter—it's all magic, isn't it?",
         "But you know, the real magic isn't in the presents we give or receive.",
@@ -34,8 +36,7 @@ public class FollowerDialogue : MonoBehaviour
         "She taught me that Christmas isn't just a holiday; it's a connection between the past, present, and future.",
         "We give gifts because it's our way of showing we care, just as those before us did.",
         "You, too, are part of this beautiful cycle—passing on these traditions, creating joy for those around you.",
-        "Remember, a gift doesn't have to be big or fancy. The best ones come from the heart.",
-        "And the best gift of all? Keeping the spirit of Christmas alive in our hearts."
+        "We continue this tradition, spreading joy, just as those before us did.",
     };
     
     [TextArea] public string[] secondDialogueLines = 
@@ -50,9 +51,16 @@ public class FollowerDialogue : MonoBehaviour
         "You used to run around in excitement, trying to peek at the presents under the tree.",
         "But it was never really about the presents—it was the mystery, the anticipation.",
         "That magic doesn’t fade with time. It stays with us, in every smile, in every hug.",
-        "And now, it’s your turn to share that magic, to pass it on to those who come after you."
+        "And now, it’s your turn to share that magic, to pass it on to those who come after you.",
     };
-    
+
+    [TextArea] public string[] finalDialogueLines =
+    {
+        "I hope you'll remember what I taught you, and keep the spirit of Christmas alive in your heart.",
+        "Goodbye for now. I am going to be quiet now.", 
+        "Feel free to walk around some more. When you are done press Exit button in the top right corner.",
+    };
+     
     
     // private void Start()
     // {

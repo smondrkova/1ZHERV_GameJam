@@ -8,7 +8,12 @@ public class PickUpPresent : MonoBehaviour
 {
     private GameObject pickedUpPresentPrefab;
     public bool isEnabled = false;
-    
+
+    public void Start()
+    {
+        isEnabled = false;
+    }
+
     public void OnPickUp(InputValue value)
     {
         if (!isEnabled) return;
@@ -28,6 +33,9 @@ public class PickUpPresent : MonoBehaviour
                 Debug.Log("Present picked up!");
                 pickedUpPresentPrefab = hit.gameObject;
                 Destroy(hit.gameObject);
+                
+                string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+                PresentManager.Instance.RemovePresent(sceneName, hit.transform.position);
                 PresentManager.Instance.PickUpPresentUI();
                 return;
             }

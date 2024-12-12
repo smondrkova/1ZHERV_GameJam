@@ -75,7 +75,7 @@ namespace Player
             Debug.Log(isGrounded);
             if (value.isPressed && isGrounded) 
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Apply jump force
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce); 
                 isJumping = true;
             } else
             {

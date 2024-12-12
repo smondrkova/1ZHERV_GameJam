@@ -54,6 +54,21 @@ public class PresentManager : MonoBehaviour
         // Add the present data to the current scene's list
         scenePresents[sceneName].Add(new PresentData { position = position, rotation = rotation, prefabName = prefabName });
     }
+    
+    public void RemovePresent(string sceneName, Vector3 position)
+    {
+        if (scenePresents.ContainsKey(sceneName))
+        {
+            for (int i = 0; i < scenePresents[sceneName].Count; i++)
+            {
+                if (scenePresents[sceneName][i].position == position)
+                {
+                    scenePresents[sceneName].RemoveAt(i);
+                    return;
+                }
+            }
+        }
+    }
 
     public List<PresentData> GetPresentsForScene(string sceneName)
     {
@@ -75,6 +90,12 @@ public class PresentManager : MonoBehaviour
     {
         if (pickedUpPresents >= totalPresents) return;
         pickedUpPresents++;
+        UpdatePresentCountText();
+    }
+    
+    public void DestroyedPresentUI()
+    {
+        remainingPresentsToPlace++;
         UpdatePresentCountText();
     }
     

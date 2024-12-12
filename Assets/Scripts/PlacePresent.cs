@@ -65,6 +65,10 @@ public class PlacePresent : MonoBehaviour
             if (hit.CompareTag("Present"))
             {
                 Destroy(hit.gameObject);
+                
+                string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+                PresentManager.Instance.RemovePresent(sceneName, hit.transform.position);
+                PresentManager.Instance.DestroyedPresentUI();
                 return;
             }
         }

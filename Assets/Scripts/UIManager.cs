@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     
     public GameObject startMenu;
+    public GameObject controlsPanel;
+    public GameObject exitButton;
     
     [Header("Slides")]
     public GameObject[] slides;
@@ -80,5 +82,18 @@ public class UIManager : MonoBehaviour
         PresentManager.Instance.SetPresentCountText(10);
         slides[currentSlideIndex].SetActive(false);
         GameManager.Instance.StartGame();
+        StartCoroutine(ShowControlsPanel());
+    }
+    
+    private IEnumerator ShowControlsPanel()
+    {
+        controlsPanel.SetActive(true);
+        yield return new WaitForSeconds(10f);
+        controlsPanel.SetActive(false);
+    }
+    
+    public void ShowExitButton()
+    {
+        exitButton.SetActive(true);
     }
 }
