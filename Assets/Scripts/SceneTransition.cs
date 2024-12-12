@@ -8,8 +8,6 @@ public class SceneTransition : MonoBehaviour
     public string targetScene; // Name of the scene to load
     public Vector3 spawnPositionInTargetScene; // Player spawn position in the new scene
     public GameObject[] presentPrefabs;
-    
-    public bool isToRightOfTarget;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -37,7 +35,8 @@ public class SceneTransition : MonoBehaviour
             if (player != null)
             {
                 // Snap the follower near the player on scene load
-                follower.transform.position = player.transform.position + Vector3.left * 1.5f; // Adjust offset as needed
+                Vector3 offset = follower.isToRightOfTarget ? Vector3.right * 2f : Vector3.left * 2f;
+                follower.transform.position = player.transform.position + offset;
             }
         }
 

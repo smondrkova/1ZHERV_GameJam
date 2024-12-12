@@ -15,6 +15,8 @@ public class Follower : MonoBehaviour
     private Animator animator;
     private Vector3 lastPosition;
     
+    public bool isToRightOfTarget;
+    
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -38,6 +40,8 @@ public class Follower : MonoBehaviour
     private void Update()
     {
         if (target == null) return;
+        
+        isToRightOfTarget = transform.position.x > target.position.x;
 
         // Calculate the distance to the target
         float distance = Vector3.Distance(transform.position, target.position);
