@@ -98,6 +98,12 @@ public class PresentManager : MonoBehaviour
         remainingPresentsToPlace++;
         UpdatePresentCountText();
     }
+
+    public void ResetPresentUI()
+    {
+        remainingPresentsToPlace = 0;
+        UpdatePresentCountText();
+    }
     
     private void UpdatePresentCountText()
     {

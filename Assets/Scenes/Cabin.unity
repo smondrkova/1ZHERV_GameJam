@@ -3082,7 +3082,7 @@ Transform:
   m_GameObject: {fileID: 376188239}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.97, y: 0, z: 0}
+  m_LocalPosition: {x: -8.84, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3101,7 +3101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScene: Snowmans
-  spawnPositionInTargetScene: {x: 8.8, y: -1.8, z: 0}
+  spawnPositionInTargetScene: {x: 8, y: -1.8, z: 0}
   presentPrefabs:
   - {fileID: 2474002767467185961, guid: 4135e598d640c844c81068538cd2a213, type: 3}
 --- !u!61 &376188242
@@ -5615,7 +5615,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.8360467
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5640,7 +5640,7 @@ Transform:
   m_GameObject: {fileID: 782485404}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.13, z: -10}
+  m_LocalPosition: {x: 0, y: 0.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5808,8 +5808,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -708.76, y: -349}
-  m_SizeDelta: {x: -1417.5, y: -698}
+  m_AnchoredPosition: {x: -843.317, y: -490.41333}
+  m_SizeDelta: {x: -1686.614, y: -980.8268}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &825234353
 MonoBehaviour:
@@ -6573,12 +6573,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -6594,7 +6594,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 782485406}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -10274,7 +10274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 609.9863, y: 290.7954}
+  m_AnchoredPosition: {x: 739, y: 433}
   m_SizeDelta: {x: 338.0273, y: 114.4092}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1253402899
@@ -11166,7 +11166,7 @@ Transform:
   m_GameObject: {fileID: 1322252034}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.07, y: 0, z: 0}
+  m_LocalPosition: {x: 8.89, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11682,7 +11682,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -630.04254, y: 133.59}
+  m_AnchoredPosition: {x: -760, y: 272}
   m_SizeDelta: {x: 302.9249, y: -54.6044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403855575
@@ -13777,8 +13777,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000022888}
-  m_SizeDelta: {x: 1661, y: 796}
+  m_AnchoredPosition: {x: -0.0050201, y: 0.000022888}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869833378
 MonoBehaviour:
@@ -14205,7 +14205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 750, y: 344}
+  m_AnchoredPosition: {x: 885, y: 500}
   m_SizeDelta: {x: 150, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1897003331
@@ -16157,6 +16157,15 @@ PrefabInstance:
       propertyPath: follower
       value: 
       objectReference: {fileID: 778502668}
+    - target: {fileID: 942612031954633262, guid: c81ae91defa63c340ab8195b5b871424, type: 3}
+      propertyPath: finalDialogueLines.Array.data[1]
+      value: Goodbye for now. I am going to be quiet now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 942612031954633262, guid: c81ae91defa63c340ab8195b5b871424, type: 3}
+      propertyPath: finalDialogueLines.Array.data[2]
+      value: Feel free to walk around some more. When you are done press Exit button
+        in the top right corner.
+      objectReference: {fileID: 0}
     - target: {fileID: 1853315853308458944, guid: c81ae91defa63c340ab8195b5b871424, type: 3}
       propertyPath: m_IsActive
       value: 1

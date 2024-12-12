@@ -137,11 +137,11 @@ namespace Player
             }
         }
         
-        public void OnCharacterSelect(InputValue value)
-        {
-            int newIndex = Mathf.RoundToInt(value.Get<float>()) - 1; // Convert 1-based input to 0-based index
-            SwitchCharacter(newIndex);
-        }
+        // public void OnCharacterSelect(InputValue value)
+        // {
+        //     int newIndex = Mathf.RoundToInt(value.Get<float>()) - 1; // Convert 1-based input to 0-based index
+        //     SwitchCharacter(newIndex);
+        // }
         
         public void SwitchCharacter(int index)
         {

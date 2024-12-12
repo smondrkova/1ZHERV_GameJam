@@ -38,6 +38,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("First dialogue complete!");
         followerDialogue.StartDialogue(followerDialogue.secondDialogueLines, OnSecondDialogueComplete);
         Player.PlayerController.Instance.SwitchCharacter(1);
+        PresentManager.Instance.ResetPresentUI();
     }
     
     private void OnSecondDialogueComplete()
