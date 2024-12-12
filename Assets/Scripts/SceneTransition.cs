@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class SceneTransition : MonoBehaviour
 {
     [Header("Transition Settings")]
     public string targetScene; // Name of the scene to load
     public Vector3 spawnPositionInTargetScene; // Player spawn position in the new scene
+    public GameObject[] presentPrefabs;
+    
+    public bool isToRightOfTarget;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -19,7 +23,46 @@ public class SceneTransition : MonoBehaviour
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Player.PlayerController.Instance.transform.position = spawnPositionInTargetScene;
+        // Reposition the player
+        var player = Player.PlayerController.Instance;
+        if (player != null)
+        {
+            player.transform.position = spawnPositionInTargetScene;
+        }
+
+        // Reposition the follower if it exists
+        var follower = Follower.Instance;
+        if (follower != null)
+        {
+            if (player != null)
+            {
+                // Snap the follower near the player on scene load
+                follower.transform.position = player.transform.position + Vector3.left * 1.5f; // Adjust offset as needed
+            }
+        }
+
+        // Load presents
+        LoadPresentsForScene(scene.name);
+        
+        
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    
+    private void LoadPresentsForScene(string sceneName)
+    {
+        var presents = PresentManager.Instance.GetPresentsForScene(sceneName);
+        foreach (var present in presents)
+        {
+            GameObject prefab = Array.Find(presentPrefabs, p => p.name == present.prefabName);
+            
+            if (prefab != null)
+            {
+                Instantiate(prefab, present.position, present.rotation);
+            }
+            else
+            {
+                Debug.LogWarning($"Failed to load prefab: {present.prefabName}");
+            }
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace Player
         private bool isGrounded;
         private Vector2 moveInput;
         
-        private bool isRunning;
+        public bool isRunning;
         private bool isJumping;
         
         [Header("Character Settings")]
@@ -156,14 +156,38 @@ namespace Player
                 Destroy(currentCharacter);
             }
             
+            // GameObject targetPrefab = FindCharacterInScene(characters[index].name);
+            // if (targetPrefab == null)
+            // {
+            //     Debug.LogWarning("Character not found in scene.");
+            //     return;
+            // }
+            //
+            // if (currentCharacter != null)
+            // {
+            //     currentCharacter.transform.SetParent(null);
+            // }
+            //
+            // targetPrefab.transform.SetParent(transform);
+            //
+            // Vector3 tempPosition = currentCharacter != null ? currentCharacter.transform.position : transform.position;
+            // if (currentCharacter != null)
+            // {
+            //     currentCharacter.transform.position = targetPrefab.transform.position;
+            // }
+            //
+            // currentCharacter = targetPrefab;
+            
             GameObject newCharacter = Instantiate(characters[index], transform.position, Quaternion.identity, transform);
             currentCharacter = newCharacter;
             
             currentCharacter.transform.localPosition = Vector3.zero;
             animator = currentCharacter.GetComponentInChildren<Animator>();
+            
+            currentCharacter.gameObject.name = characters[index].name;
 
             Debug.Log("Current Character name" + currentCharacter.gameObject.name);
-            if (currentCharacter.gameObject.name == "Adult(Clone)")
+            if (currentCharacter.gameObject.name == "Adult")
             {
                 placePresentScript.isEnabled = true;
             }
@@ -172,7 +196,7 @@ namespace Player
                 placePresentScript.isEnabled = false;
             }
             
-            if (currentCharacter.gameObject.name == "Kid(Clone)")
+            if (currentCharacter.gameObject.name == "Kid")
             {
                 pickUpPresentScript.isEnabled = true;
             }
@@ -183,6 +207,21 @@ namespace Player
             
             Debug.Log("Character switched to " + currentCharacter.name);
         }
+        
+        private GameObject FindCharacterInScene(string prefabName)
+        {
+            GameObject[] allCharacters = GameObject.FindGameObjectsWithTag("Player"); // Ensure all characters have the tag "Character"
+            foreach (GameObject character in allCharacters)
+            {
+                if (character.name.StartsWith(prefabName))
+                {
+                    return character;
+                }
+            }
+
+            return null; // Return null if no matching character is found
+        }
+
     }
     
 

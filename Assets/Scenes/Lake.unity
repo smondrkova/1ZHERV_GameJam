@@ -482,6 +482,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetScene: Snowmans
   spawnPositionInTargetScene: {x: -8.7, y: -0.45, z: 0}
+  presentPrefabs:
+  - {fileID: 2474002767467185961, guid: 4135e598d640c844c81068538cd2a213, type: 3}
 --- !u!61 &155856983
 BoxCollider2D:
   m_ObjectHideFlags: 0

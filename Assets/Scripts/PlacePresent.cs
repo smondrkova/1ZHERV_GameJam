@@ -37,6 +37,10 @@ public class PlacePresent : MonoBehaviour
         }
 
         GameObject newPresent = Instantiate(presentPrefab, placementPoint.position, Quaternion.identity);
+        
+        string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        PresentManager.Instance.SavePresent(sceneName, newPresent.transform.position, newPresent.transform.rotation, presentPrefab.name);
+        
         Debug.Log("Present placed!");
     }
 
