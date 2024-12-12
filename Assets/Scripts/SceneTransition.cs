@@ -43,6 +43,12 @@ public class SceneTransition : MonoBehaviour
         // Load presents
         LoadPresentsForScene(scene.name);
         
+        var followerDialogue = FollowerDialogue.Instance;
+        if (followerDialogue != null)
+        {
+            followerDialogue.Speak("Where are we now?");
+        }
+        
         
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
