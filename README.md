@@ -47,7 +47,7 @@ https://www.stud.fit.vutbr.cz/~xsmond00/1ZHERV_GameJam_build_WebGL/index.html
 
 ## Credits
 
-Game Design, Programmings, Pixel Assets and animations: Barbora Šmondrková (xsmond00)
+Game Design, Programmings, Pixel Assets and animations: **Barbora Šmondrková (xsmond00)**
 
 This game also uses assets from the following creators:
 
