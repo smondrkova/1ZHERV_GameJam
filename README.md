@@ -60,3 +60,10 @@ This game also uses assets from the following creators:
 ## Notes
 
 This game was developed during a Game Jam. It is designed to be enjoyed solo or with family and friends by sharing tasks and switching roles during gameplay.
+
+
+## Vision for Future and Improvements
+
+- Add Audio: Include sound effects and background music.
+- Expand Environments: Create more scenes like snowy forests or a Christmas village to enrich the experience.
+- 3D Movement: Transition from 2D to 3D movement to enable more exploring.
