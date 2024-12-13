@@ -19,7 +19,7 @@ public class PresentManager : MonoBehaviour
     {
         public Vector3 position;
         public Quaternion rotation;
-        public string prefabName; // Used to respawn the correct prefab
+        public string prefabName; 
     }
 
     private Dictionary<string, List<PresentData>> scenePresents = new Dictionary<string, List<PresentData>>();
@@ -50,8 +50,7 @@ public class PresentManager : MonoBehaviour
         {
             scenePresents[sceneName] = new List<PresentData>();
         }
-
-        // Add the present data to the current scene's list
+        
         scenePresents[sceneName].Add(new PresentData { position = position, rotation = rotation, prefabName = prefabName });
     }
     

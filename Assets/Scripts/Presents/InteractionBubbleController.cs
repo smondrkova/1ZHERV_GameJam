@@ -5,19 +5,17 @@ using UnityEngine.UI;
 public class InteractionBubbleController : MonoBehaviour
 {
     [Header("Settings")]
-    public float interactionRange = 1.5f; // Distance to trigger the bubble
-    public GameObject interactionBubblePrefab; // Reference to the bubble prefab
+    public float interactionRange = 1.5f; 
+    public GameObject interactionBubblePrefab; 
     private InteractionBubble interactionBubbleScript;
 
     private GameObject interactionBubbleInstance;
-    private Transform player; // Player's transform
+    private Transform player; 
 
     private void Start()
     {
-        // Locate the player in the scene (ensure the player has the tag "Player")
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        // Instantiate the bubble but hide it initially
+        
         interactionBubbleInstance = Instantiate(interactionBubblePrefab, transform.position, Quaternion.identity);
         interactionBubbleInstance.SetActive(false);
         
@@ -30,11 +28,9 @@ public class InteractionBubbleController : MonoBehaviour
         
         if (player != null)
         {
-            // Calculate the distance between the player and the present
             float distance = Vector3.Distance(player.position, transform.position);
             if (distance <= interactionRange)
             {
-                // Show the bubble and update its position above the present
                 interactionBubbleInstance.SetActive(true);
                 interactionBubbleInstance.transform.position = transform.position + Vector3.up * 0.6f; // Adjust offset
 
@@ -53,7 +49,6 @@ public class InteractionBubbleController : MonoBehaviour
             }
             else
             {
-                // Hide the bubble when out of range
                 interactionBubbleInstance.SetActive(false);
             }
         }
@@ -61,7 +56,6 @@ public class InteractionBubbleController : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Cleanup when the present is destroyed
         if (interactionBubbleInstance != null)
         {
             Destroy(interactionBubbleInstance);

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class CharacterSwitcher : MonoBehaviour
 {
     [Header("Character References")]
-    public GameObject[] characters; // Assign characters in the Inspector
+    public GameObject[] characters; 
     private int activeCharacterIndex = 0;
 
     private PlayerController playerController;
@@ -14,7 +14,7 @@ public class CharacterSwitcher : MonoBehaviour
     {
         playerController = GetComponentInParent<PlayerController>();
         
-        // Activate the first character and deactivate the others
+        // activate the first character and deactivate the others
         for (int i = 0; i < characters.Length; i++)
         {
             characters[i].SetActive(i == activeCharacterIndex);
@@ -23,25 +23,22 @@ public class CharacterSwitcher : MonoBehaviour
 
     public void OnCharacterSelect(InputValue value)
     {
-        // Get the input as a float value (e.g., 1, 2, 3)
         int selectedCharacter = Mathf.RoundToInt(value.Get<float>());
-
-        // Switch characters
-        SwitchCharacter(selectedCharacter - 1); // Subtract 1 to match the array index
+        
+        SwitchCharacter(selectedCharacter - 1); 
     }
 
     private void SwitchCharacter(int newIndex)
     {
         if (newIndex >= 0 && newIndex < characters.Length)
         {
-            // Deactivate the current character
+            // deactivate the current character
             characters[activeCharacterIndex].SetActive(false);
 
-            // Activate the selected character
+            // activate the selected character
             activeCharacterIndex = newIndex;
             characters[activeCharacterIndex].SetActive(true);
             
-            // Update the player controller with the new character
             playerController.animator = characters[activeCharacterIndex].GetComponent<Animator>();
         }
         else

@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 public class PlacePresent : MonoBehaviour
 {
     [Header("Placement Settings")]
-    public GameObject presentPrefab; // Prefab of the present to place
+    public GameObject presentPrefab; 
     public Transform placementPoint;
-    public LayerMask placementLayerMask; // Layer mask to filter placement positions
+    public LayerMask placementLayerMask; 
     
     public bool isEnabled = true;
     

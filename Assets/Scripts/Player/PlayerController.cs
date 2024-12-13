@@ -7,11 +7,11 @@ namespace Player
     public class PlayerController : MonoBehaviour
     {
         public static PlayerController Instance;
-        [Header("Movement Settings")] public float moveSpeed = 5f; // Speed of horizontal movement
-        public float jumpForce = 10f; // Force applied for jumping
-        public LayerMask groundLayer; // Layer considered as "ground" for jumping
+        [Header("Movement Settings")] public float moveSpeed = 5f; 
+        public float jumpForce = 10f; 
+        public LayerMask groundLayer; 
 
-        [Header("Ground Check")] public Transform groundCheck; // Point to check if the player is on the ground
+        [Header("Ground Check")] public Transform groundCheck; 
         public float groundCheckRadius = 0.2f;
 
         public Rigidbody2D rb;
@@ -58,7 +58,7 @@ namespace Player
 
         public void OnMove(InputValue value)
         {
-            moveInput = value.Get<Vector2>(); // Read horizontal input
+            moveInput = value.Get<Vector2>(); 
             
             if (moveInput.x > 0 || moveInput.x < 0)
             {
@@ -85,13 +85,11 @@ namespace Player
 
         private void FixedUpdate()
         {
-            // Horizontal movement
             if (rb != null)
             {
                 rb.velocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
             }
 
-            // Check if grounded
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
             
             AnimatePlayer();
@@ -99,7 +97,7 @@ namespace Player
 
         private void OnDrawGizmosSelected()
         {
-            // Visualize the ground check in the scene view
+            // visualize the ground check in the scene view
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
@@ -115,7 +113,8 @@ namespace Player
             {
                 transform.localScale = new Vector3(-1, 1, 1);
             }
-
+        
+            // animations
             if (animator != null)
             {
                 var speed =  Mathf.Abs(moveInput.x);
@@ -210,7 +209,7 @@ namespace Player
         
         private GameObject FindCharacterInScene(string prefabName)
         {
-            GameObject[] allCharacters = GameObject.FindGameObjectsWithTag("Player"); // Ensure all characters have the tag "Character"
+            GameObject[] allCharacters = GameObject.FindGameObjectsWithTag("Player"); 
             foreach (GameObject character in allCharacters)
             {
                 if (character.name.StartsWith(prefabName))
@@ -219,11 +218,9 @@ namespace Player
                 }
             }
 
-            return null; // Return null if no matching character is found
+            return null; 
         }
 
     }
-    
-
 
 }

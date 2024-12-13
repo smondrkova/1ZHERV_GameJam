@@ -6,9 +6,9 @@ public class Follower : MonoBehaviour
     
     [Header("Follow Settings")]
     public Player.PlayerController player;
-    private Transform target; // The character to follow
-    public float followSpeed = 5f; // Speed of following
-    public float followDistance = 1.5f; // Minimum distance to maintain from the target
+    private Transform target; 
+    public float followSpeed = 5f; 
+    public float followDistance = 1.5f; 
 
     private Animator animator;
     private Vector3 lastPosition;
@@ -40,11 +40,9 @@ public class Follower : MonoBehaviour
         if (target == null) return;
         
         isToRightOfTarget = transform.position.x > target.position.x;
-
-        // Calculate the distance to the target
+        
         float distance = Vector3.Distance(transform.position, target.position);
-
-        // Move closer to the target if the distance is greater than the followDistance
+        
         if (distance > followDistance)
         {
             Vector3 direction = (target.position - transform.position).normalized;
@@ -69,10 +67,10 @@ public class Follower : MonoBehaviour
             animator.SetBool("Run", false);
         }
         
-        // Adjust the character's direction to face the target
+        // rotate the character's direction to face the target
         Vector3 direction = target.position - transform.position;
-        if (direction.x > 0) transform.localScale = new Vector3(1, 1, 1); // Facing right
-        else if (direction.x < 0) transform.localScale = new Vector3(-1, 1, 1); // Facing left
+        if (direction.x > 0) transform.localScale = new Vector3(1, 1, 1); 
+        else if (direction.x < 0) transform.localScale = new Vector3(-1, 1, 1); 
     }
 
 

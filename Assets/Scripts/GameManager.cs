@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // Ensure the GameManager persists between scenes
         if (Instance == null)
         {
             Instance = this;
@@ -30,10 +29,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(string sceneName, Vector3 spawnPosition)
     {
-        // Update the player's spawn position
         playerPosition = spawnPosition;
         
-        // Load the target scene
         SceneManager.LoadScene(sceneName);
     }
 

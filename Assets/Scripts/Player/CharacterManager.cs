@@ -6,7 +6,7 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager Instance;
     
-    public Player.PlayerController[] characters; // Array of all characters
+    public Player.PlayerController[] characters; 
     public Player.PlayerController activeCharacter;
     private bool canSwitchCharacter = false;
 

@@ -28,11 +28,6 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    private void Start()
-    {
-        
-    }
-    
     public void ShowTutorial()
     {
         startMenu.SetActive(false);
